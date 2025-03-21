@@ -36,7 +36,7 @@ function sendConfirmationEmail(email, cc = []) {
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
         
         body {
-            background: #000000;
+            background:rgb(27, 23, 23);
             margin: 0;
             padding: 0;
             font-family: 'Roboto', Arial, sans-serif;
@@ -60,13 +60,13 @@ function sendConfirmationEmail(email, cc = []) {
             background: rgba(0, 0, 0, 0.7);
             padding: 25px 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             border-bottom: 1px solid rgba(255, 204, 0, 0.3);
         }
         
         .header img {
-            height: 70px;
+            height: 150px;
             margin: 0 10px;
         }
         
@@ -195,6 +195,9 @@ function sendConfirmationEmail(email, cc = []) {
         
         .contact {
             margin-bottom: 15px;
+        }
+        .contact p {
+            color :rgb(246, 245, 241);
         }
         
         .contact a {
@@ -333,7 +336,6 @@ function sendConfirmationEmail(email, cc = []) {
         <!-- Header with Logos -->
         <div class="header">
             <img src="https://techxtreme.gu-tech.org/_next/static/media/logo-tx.76655086.png" alt="TechXtreme 2025 Logo">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Clipped_image_20250309_112953-sBBBHvYmOIlsHcGHrIu49aGiSF0rar.png" alt="Gandhinagar Uni Logo">
         </div>
         
         <div class="content">
@@ -341,7 +343,7 @@ function sendConfirmationEmail(email, cc = []) {
             <h1>TechXtreme 2025 is Here!</h1>
             
             <!-- Description -->
-            <p class="description">Experience the most thrilling tech festival with competitions, innovation, and esports action. Join us for a journey where technology meets talent!</p>
+          <p class="description">TechXtreme 2025 is not just another tech festival—it's a gateway to the future. Witness groundbreaking innovations, engage in thrilling competitions, and interact with visionaries from across industries. Whether you're a coding prodigy, an esports enthusiast, or a creative thinker, there's something for everyone. Be part of the revolution where technology meets talent!</p>
             
             <!-- Event Cards (Responsive) -->
             <div class="event-card technical description">
@@ -379,7 +381,7 @@ function sendConfirmationEmail(email, cc = []) {
             
             <div class="social-links">
                 <a href="https://in.linkedin.com/company/gandhinagaruni">LinkedIn</a>
-                <a href="https://www.gandhinagaruni.ac.in/">Website</a>
+                <a href="https://techxtreme.gu-tech.org/">Website</a>
                 <a href="https://www.instagram.com/techxtreme.gu/">Instagram</a>
             </div>
             
@@ -392,11 +394,18 @@ function sendConfirmationEmail(email, cc = []) {
   // Configure email options, including CC
   const mailOptions = {
     from: 'tech@gandhinagaruni.ac.in',
-    to: email,
-    cc: cc,
+    to: ["students@gandhinagaruni.ac.in","students@git.org.in",],
+    cc: ["vickkyyyy.bsn@gmail.com","shadowvortex9290@gmail.com"],
     subject: subject,
     text: "Your registration has been confirmed. Please view this email in HTML format for full details.",
     html: htmlBody,
+    attachments: [
+        {
+          filename: 'Poster',
+          path: 'https://techxtreme.gu-tech.org/_next/static/media/poster.67cc6dcd.png',
+          cid: 'techxtreme-logo'
+        }
+      ]
   };
   
   // Send the email
@@ -412,12 +421,17 @@ function sendConfirmationEmail(email, cc = []) {
 
 // Example usage:
 // Single CC recipient
-sendConfirmationEmail("rudrapokar5105@gmail.com", "pritsenjaliya1162@gmail.com");
-
+sendConfirmationEmail()
 // Multiple CC recipients
 // sendConfirmationEmail("user@example.com", ["cc1@example.com", "cc2@example.com"]);
 
 // No CC recipients
 // sendConfirmationEmail("user@example.com");
+
+// sendConfirmationEmail("students@gandhinagaruni.ac.in","students@git.org.in",  from: 'tech@gandhinagaruni.ac.in',
+// to: ["students@gandhinagaruni.ac.in","students@git.org.in"],
+// cc: ["tx@gandhinagaruni.ac.in","staff@gandhinagaruni.ac.in","staff@gandhinagaruni.ac.in","vc@gandhinagaruni.ac.in","registrar@gandhinagaruni.ac.in","dracad@gandhinagaruni.ac.in","dradmin@gandhinagaruni.ac.in","dycoe@gandhinagaruni.ac.in","hoi@gandhinagaruni.ac.in","hod@gandhinagaruni.ac.in","230101027049@gandhinagaruni.ac.in"],
+// "]);
+
 
 module.exports = { sendConfirmationEmail };
