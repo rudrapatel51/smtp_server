@@ -22,8 +22,9 @@ function sendConfirmationEmail(email, cc = []) {
       pass: 'tfom ptwq vufd grrf' // Your SMTP password
     }
   });
+ 
 
-  const subject = "Event Registration Confirmation";
+
   
   // Create HTML email body with nice formatting
   const htmlBody = `<!DOCTYPE html>
@@ -390,14 +391,14 @@ function sendConfirmationEmail(email, cc = []) {
     </div>
 </body>
 </html>`;
+
   
   // Configure email options, including CC
   const mailOptions = {
     from: 'tech@gandhinagaruni.ac.in',
-    to: ["students@gandhinagaruni.ac.in","students@git.org.in",],
+    to: ["rudrapokar5105@gmail.com","vivekkdubey028@gmail.com"],
     cc: ["vickkyyyy.bsn@gmail.com","shadowvortex9290@gmail.com"],
-    subject: subject,
-    text: "Your registration has been confirmed. Please view this email in HTML format for full details.",
+    text: "We thrill to announce the launch of TechXtreme 2k25.",
     html: htmlBody,
     attachments: [
         {
@@ -421,7 +422,10 @@ function sendConfirmationEmail(email, cc = []) {
 
 // Example usage:
 // Single CC recipient
-sendConfirmationEmail()
+const email =  ["rudrapokar5105@gmail.com","vivekkdubey028@gmail.com",]
+    const cc = ["vickkyyyy.bsn@gmail.com","shadowvortex9290@gmail.com"]
+    
+    sendConfirmationEmail()
 // Multiple CC recipients
 // sendConfirmationEmail("user@example.com", ["cc1@example.com", "cc2@example.com"]);
 
