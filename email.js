@@ -3,7 +3,7 @@
  * Requires: npm install nodemailer
  */
 
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 
 /**
  * Sends a confirmation email for TechXtreme 2025 event registration via SMTP
@@ -14,18 +14,15 @@ function sendConfirmationEmail(email, cc = []) {
   // Configure SMTP transporter
   // Replace these with your actual SMTP server details
   const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com', // Your SMTP server hostname
+    host: "smtp.gmail.com", // Your SMTP server hostname
     port: 587, // Common SMTP ports: 25, 465 (SSL), 587 (TLS)
     secure: false, // true for 465, false for other ports
     auth: {
-      user: 'tech@gandhinagaruni.ac.in', // Your SMTP username
-      pass: 'tfom ptwq vufd grrf' // Your SMTP password
-    }
+      user: "", // Your SMTP username
+      pass: "", // Your SMTP password
+    },
   });
- 
 
-
-  
   // Create HTML email body with nice formatting
   const htmlBody = `<!DOCTYPE html>
 <html>
@@ -392,40 +389,41 @@ function sendConfirmationEmail(email, cc = []) {
 </body>
 </html>`;
 
-  
   // Configure email options, including CC
   const mailOptions = {
-    from: 'tech@gandhinagaruni.ac.in',
-    to: ["rudrapokar5105@gmail.com","vivekkdubey028@gmail.com"],
-    cc: ["vickkyyyy.bsn@gmail.com","shadowvortex9290@gmail.com"],
+    from: "tech@gandhinagaruni.ac.in",
+    to: ["students@gandhinagaruni.ac.in", "students@git.org.in"],
+    cc: [
+      "tx@gandhinagaruni.ac.in",
+      "staff@gandhinagaruni.ac.in",
+      "staff@gandhinagaruni.ac.in",
+      "vc@gandhinagaruni.ac.in",
+      "registrar@gandhinagaruni.ac.in",
+      "dracad@gandhinagaruni.ac.in",
+      "dradmin@gandhinagaruni.ac.in",
+      "dycoe@gandhinagaruni.ac.in",
+      "hoi@gandhinagaruni.ac.in",
+      "hod@gandhinagaruni.ac.in",
+      "230101027049@gandhinagaruni.ac.in",
+      "230406019034@gandhinagaruni.ac.in"   
+    ],
+    subject: "TechXtreme2k25 is live : Bytes to Brilliance",
     text: "We thrill to announce the launch of TechXtreme 2k25.",
     html: htmlBody,
-    attachments: [
-        {
-          filename: 'Poster',
-          path: 'https://techxtreme.gu-tech.org/_next/static/media/poster.67cc6dcd.png',
-          cid: 'techxtreme-logo'
-        }
-      ]
   };
-  
+
   // Send the email
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error('Error sending email:', error);
+      console.error("Error sending email:", error);
       return false;
     }
-    console.log('Email sent successfully:', info.messageId);
+    console.log("Email sent successfully:", info.messageId);
     return true;
   });
 }
 
-// Example usage:
-// Single CC recipient
-const email =  ["rudrapokar5105@gmail.com","vivekkdubey028@gmail.com",]
-    const cc = ["vickkyyyy.bsn@gmail.com","shadowvortex9290@gmail.com"]
-    
-    sendConfirmationEmail()
+sendConfirmationEmail();
 // Multiple CC recipients
 // sendConfirmationEmail("user@example.com", ["cc1@example.com", "cc2@example.com"]);
 
@@ -436,6 +434,5 @@ const email =  ["rudrapokar5105@gmail.com","vivekkdubey028@gmail.com",]
 // to: ["students@gandhinagaruni.ac.in","students@git.org.in"],
 // cc: ["tx@gandhinagaruni.ac.in","staff@gandhinagaruni.ac.in","staff@gandhinagaruni.ac.in","vc@gandhinagaruni.ac.in","registrar@gandhinagaruni.ac.in","dracad@gandhinagaruni.ac.in","dradmin@gandhinagaruni.ac.in","dycoe@gandhinagaruni.ac.in","hoi@gandhinagaruni.ac.in","hod@gandhinagaruni.ac.in","230101027049@gandhinagaruni.ac.in"],
 // "]);
-
 
 module.exports = { sendConfirmationEmail };
